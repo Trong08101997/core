@@ -5,18 +5,20 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
-@Table(name = "TokenUser", schema = "nhatro", catalog = "")
+@Table(name = "token_user", schema = "nhatro", catalog = "")
 public class TokenUserEntity {
     private int id;
     private Integer userId;
     private Timestamp timeCreate;
     private Timestamp timeUpdate;
-    private String status;
-    private Integer deviceId;
+    private Integer status;
+    private String deviceId;
     private String token;
+    private String deviceName;
 
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {
         return id;
     }
@@ -26,7 +28,7 @@ public class TokenUserEntity {
     }
 
     @Basic
-    @Column(name = "userId")
+    @Column(name = "user_id")
     public Integer getUserId() {
         return userId;
     }
@@ -57,21 +59,21 @@ public class TokenUserEntity {
 
     @Basic
     @Column(name = "status")
-    public String getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
     @Basic
-    @Column(name = "deviceId")
-    public Integer getDeviceId() {
+    @Column(name = "device_id")
+    public String getDeviceId() {
         return deviceId;
     }
 
-    public void setDeviceId(Integer deviceId) {
+    public void setDeviceId(String deviceId) {
         this.deviceId = deviceId;
     }
 
@@ -102,5 +104,15 @@ public class TokenUserEntity {
     @Override
     public int hashCode() {
         return Objects.hash(id, userId, timeCreate, timeUpdate, status, deviceId, token);
+    }
+
+    @Basic
+    @Column(name = "device_name")
+    public String getDeviceName() {
+        return deviceName;
+    }
+
+    public void setDeviceName(String deviceName) {
+        this.deviceName = deviceName;
     }
 }

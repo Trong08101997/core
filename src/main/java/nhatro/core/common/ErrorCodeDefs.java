@@ -2,7 +2,7 @@ package nhatro.core.common;
 
 public class ErrorCodeDefs {
     public static final String SECRET = "@nhatro@";
-    public static final int CODE_OK = 0;
+    public static final int CODE_OK = 200;
     public static final int UNKNOWN = 500;
     public static final int TOKEN_FAIL = 401;
 
@@ -12,7 +12,7 @@ public class ErrorCodeDefs {
             case UNKNOWN:
                 break;
             case CODE_OK:
-                response = "Ok";
+                response = "Success";
                 break;
             case TOKEN_FAIL:
                 response = "Chưa xác thực";

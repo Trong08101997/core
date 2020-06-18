@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
-@Table(name = "User", schema = "nhatro", catalog = "")
+@Table(name = "user", schema = "nhatro", catalog = "")
 public class UserEntity {
     private int id;
     private String username;
@@ -19,9 +19,14 @@ public class UserEntity {
     private String cmnd;
     private String quequan;
     private String idfacebook;
+    private Integer status;
+    private Integer checkotp;
+    private Integer otp;
+    private Timestamp timecreateotp;
 
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int getId() {
         return id;
     }
@@ -162,5 +167,45 @@ public class UserEntity {
     @Override
     public int hashCode() {
         return Objects.hash(id, username, sdt, email, hovaten, avatar, ngaysinh, gioitinh, hashkey, cmnd, quequan, idfacebook);
+    }
+
+    @Basic
+    @Column(name = "status")
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    @Basic
+    @Column(name = "checkotp")
+    public Integer getCheckotp() {
+        return checkotp;
+    }
+
+    public void setCheckotp(Integer checkotp) {
+        this.checkotp = checkotp;
+    }
+
+    @Basic
+    @Column(name = "otp")
+    public Integer getOtp() {
+        return otp;
+    }
+
+    public void setOtp(Integer otp) {
+        this.otp = otp;
+    }
+
+    @Basic
+    @Column(name = "timecreateotp")
+    public Timestamp getTimecreateotp() {
+        return timecreateotp;
+    }
+
+    public void setTimecreateotp(Timestamp timecreateotp) {
+        this.timecreateotp = timecreateotp;
     }
 }
